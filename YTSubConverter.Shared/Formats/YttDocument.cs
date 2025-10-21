@@ -13,7 +13,7 @@ namespace YTSubConverter.Shared.Formats
     public class YttDocument : SubtitleDocument
     {
         private const string ZeroWidthSpace = "\x200B";
-        private const string PaddingSpace = "\x200B \x200B"; // Surround with zwsp's so we can recognize and remove it during reverse conversion
+        private const string PaddingSpace = "\x200B\x200B"; // Surround with zwsp's so we can recognize and remove it during reverse conversion
 
         private static readonly Size ReferenceVideoDimensions = new Size(1280, 720);
 
