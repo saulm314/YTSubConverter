@@ -965,9 +965,12 @@ namespace YTSubConverter.Shared.Formats
                    };
         }
 
+        // TwitchChatOffset: we always want the Twitch chat to be left-justified,
+        // so we modify this method
         private static int GetJustificationId(AnchorPoint anchorPoint)
         {
-            switch (anchorPoint)
+            return 0;
+            /*switch (anchorPoint)
             {
                 case AnchorPoint.TopLeft:
                 case AnchorPoint.MiddleLeft:
@@ -986,7 +989,7 @@ namespace YTSubConverter.Shared.Formats
 
                 default:
                     throw new ArgumentOutOfRangeException();
-            }
+            }*/
         }
 
         private static (int, int) GetPrintAndScrollDirectionIds(HorizontalTextDirection hor, VerticalTextType ver)
