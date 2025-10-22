@@ -12,8 +12,14 @@ namespace YTSubConverter.Shared.Formats
 {
     public class YttDocument : SubtitleDocument
     {
-        private const string ZeroWidthSpace = "\x200B";
-        private const string PaddingSpace = "\x200B\x200B"; // Surround with zwsp's so we can recognize and remove it during reverse conversion
+        // TwitchChatOffset: for our use case, these zwsp's are not needed and cause problems
+        //  since we have them on every YTSubConverter.Shared.Line but not on every actual displayed line
+        //  (since a single YTSubConverter.Shared.Line can contain newline characters \n and thus in actual fact multiple lines)
+        // as such, the first displayed line contains zwsp's but none of the other displayed lines do,
+        // since a zwsp has a slightly bigger height than all the other characters, this causes the first displayed line to always be vertically bigger
+        // for our use case, we don't need to worry about reverse conversion and so on, so we can just remove these zwsp's and everything works fine
+        private const string ZeroWidthSpace = "";
+        private const string PaddingSpace = ""; // Surround with zwsp's so we can recognize and remove it during reverse conversion
 
         private static readonly Size ReferenceVideoDimensions = new Size(1280, 720);
 
