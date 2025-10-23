@@ -717,6 +717,7 @@ namespace YTSubConverter.Shared.Formats
             writer.WriteStartElement("ws");
             writer.WriteAttributeString("id", styleId.ToString());
             writer.WriteAttributeString("ju", GetJustificationId(style.AnchorPoint).ToString());
+            writer.WriteAttributeString("wfo", style.WindowOpacity.ToString());
             (int pd, int sd) = GetPrintAndScrollDirectionIds(style.HorizontalTextDirection, style.VerticalTextType);
             writer.WriteAttributeString("pd", pd.ToString());
             writer.WriteAttributeString("sd", sd.ToString());

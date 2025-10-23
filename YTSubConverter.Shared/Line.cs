@@ -81,6 +81,15 @@ namespace YTSubConverter.Shared
             set;
         } = true;
 
+        // TwitchChatOffset:
+        // will result in a double window if dark text is present and AndroidDarkTextHackAllowed is true
+        // should not be exactly 255 as YouTube is known for overriding that sometimes; 254 is fine
+        public byte WindowOpacity
+        {
+            get;
+            set;
+        } = 0;
+
         public override string ToString()
         {
             return Text;
