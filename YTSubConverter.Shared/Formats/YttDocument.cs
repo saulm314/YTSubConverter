@@ -97,11 +97,16 @@ namespace YTSubConverter.Shared.Formats
 
         public override void Save(TextWriter textWriter)
         {
-            CloseGaps();
-            MergeSimultaneousLines();
-            MergeIdenticallyFormattedSections();
-            ApplyEnhancements();
-            MergeIdenticallyFormattedSections();
+            Lines.RemoveAll(line => line.Sections.Count == 0);
+
+            if (Lines.Count > 0)
+            {
+                CloseGaps();
+                MergeSimultaneousLines();
+                MergeIdenticallyFormattedSections();
+                ApplyEnhancements();
+                MergeIdenticallyFormattedSections();
+            }
 
             Dictionary<Line, int> positions = ExtractAttributes(Lines, new LinePositionComparer(this));
             Dictionary<Line, int> windowStyles = ExtractAttributes(Lines, new LineAlignmentComparer());
