@@ -588,12 +588,12 @@ namespace YTSubConverter.Shared.Formats.Ass
                 writer.Write(StyleColorToHex(style.PrimaryColor) + ",");
                 writer.Write(StyleColorToHex(style.SecondaryColor) + ",");
                 writer.Write(StyleColorToHex(style.OutlineColor) + ",");
-                writer.Write(StyleColorToHex(style.ShadowColor) + ",");
+                writer.Write(StyleColorToHex(Color.FromArgb(style.WindowOpacity, 0, 0, 0)) + ",");
                 writer.Write((style.Bold ? 1 : 0) + ",");
                 writer.Write((style.Italic ? 1 : 0) + ",");
                 writer.Write((style.Underline ? 1 : 0) + ",");
                 writer.Write("0,100,100,0,0,");
-                writer.Write((style.OutlineIsBox ? 3 : 1) + ",");
+                writer.Write((style.BackgroundEnable ? 3 : 4) + ",");
                 writer.Write(style.OutlineThickness.ToString(CultureInfo.InvariantCulture) + ",");
                 writer.Write(style.ShadowDistance.ToString(CultureInfo.InvariantCulture) + ",");
                 writer.Write(GetAlignment(style.AnchorPoint) + ",");
