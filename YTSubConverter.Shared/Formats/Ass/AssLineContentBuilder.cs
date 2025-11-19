@@ -81,7 +81,7 @@ namespace YTSubConverter.Shared.Formats.Ass
             FlushTags();
 
             text = Regex.Replace(text, @"\\([nNh])", "\\{}$1");
-            text = Regex.Replace(text, @"\r\n", "\\N");
+            text = Regex.Replace(text, @"\r?\n", "\\N");
             text = text.Replace("\xA0", "\\h");
             _content.Append(text);
         }
