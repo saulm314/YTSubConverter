@@ -678,7 +678,17 @@ namespace YTSubConverter.Shared.Formats.Ass
         private void WriteLineMetadata(AssLine line, AssStyle style, TextWriter writer)
         {
             string effects = !line.AndroidDarkTextHackAllowed ? EffectNames.NoAndroidDarkTextHack : string.Empty;
-            writer.Write(@$"Dialogue: {line.Layer},{line.Start:H\:mm\:ss\.ff},{line.End:H\:mm\:ss\.ff},{style.Name},,0,0,0,{effects},");
+            writer.Write(@$"Dialogue: {line.Layer},{FormatTime(line.Start)},{FormatTime(line.End)},{style.Name},,0,0,0,{effects},");
+        }
+
+        private string FormatTime(DateTime messageDateTime)
+        {
+            TimeSpan messageTime = messageDateTime - TimeBase;
+            int hours = messageTime.Hours + messageTime.Days * 24;
+            int minutes = messageTime.Minutes;
+            int seconds = messageTime.Seconds;
+            int centiseconds = messageTime.Milliseconds / 10;
+            return $"{hours}:{minutes}:{seconds}.{centiseconds}";
         }
 
         private AssStyle GetStyleMatchingStructure(AssSection section)
